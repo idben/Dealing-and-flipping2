@@ -1,0 +1,139 @@
+@use "sass:math"
+$range-base: 45deg
+$number-of-cards: 10
+$rotation-range: $range-base*2
+// $rotation-step: $rotation-range / ($number-of-cards - 1)
+$rotation-step: math.div($rotation-range, $number-of-cards - 1)
+$translate-distance: -50px
+
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap')
+html, body
+  height: 100%
+  padding: 0
+  margin: 0
+.game
+  position: relative
+  outline: 1px solid red
+  height: 100%
+  overflow: hidden
+  font-family: 'Croissant One', cursive
+  .tip
+    text-align: center
+    font-size: 32px
+  .post1
+    margin-bottom: 450px
+  .post2
+    margin-left: 450px
+  .post3
+    margin-left: -450px
+  .card
+    position: absolute
+    left: 0
+    right: 0
+    margin: auto
+    width: 200px
+    height: 300px
+    border-radius: 10px
+    display: flex
+    justify-content: center
+    align-items: center
+    bottom: -100px
+    transform-origin: center calc( 100% + 100px )
+    perspective: 500px
+    transition: transform 0.5s
+    .content
+      position: absolute
+      width: 100%
+      height: 100%
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1)
+      transition: transform 1s
+      transform-style: preserve-3d
+      border-radius: 16px
+      .front
+        position: absolute
+        height: 100%
+        width: 100%
+        text-align: center
+        border-radius: 5px
+        backface-visibility: hidden
+        &::after
+          content: ""
+          position: absolute
+          left: 0px
+          top: 0px
+          width: 100%
+          height: 100%
+          border-radius: 16px
+          overflow: hidden
+          background-image: url(../images/back.png)
+          background-position: center center
+          background-size: cover
+      .back
+        position: absolute
+        height: 100%
+        width: 100%
+        color: #03446A
+        background-color: #fff
+        text-align: center
+        font-size: 40px
+        font-weight: 700
+        border-radius: 15px
+        backface-visibility: hidden
+        transform: rotateY(180deg)
+        border-radius: 10px
+        display: flex
+        justify-content: center
+        align-items: center
+        &::after
+          content: attr(text)
+        &::before
+          content: ""
+          position: absolute
+          left: 10px
+          top: 10px
+          width: calc( 100% - 30px)
+          height: calc( 100% - 30px)
+          border: 5px solid #03446A
+          border-radius: 10px
+          background-color: transpatent
+      .reversed
+        &::after
+          rotate: 180deg
+    .active
+      transform: rotateY(180deg)
+      transition: transform 0.5s
+    .pickup
+      margin-bottom: 100px
+  .forward1
+    z-index: 1
+    transition: all 0.5s
+    bottom: 60px
+  .forward12
+    z-index: 2
+    bottom: 490px
+  .forward2
+    transition: all 0.5s
+    bottom: 60px
+  .forward22
+    bottom: 260px
+    left: 450px
+  .forward3
+    z-index: 3
+    transition: all 0.5s
+    bottom: 60px
+  .forward32
+    bottom: 260px
+    left: -450px
+  @for $i from 1 through $number-of-cards
+    $rotation-angle: $range-base*-1 + $rotation-step * ($i - 1)
+    .card#{$i}Active
+      transition: transform 0.5s
+      transform: rotate($rotation-angle)
+      &:hover
+        $translate-x: $translate-distance * math.sin($rotation-angle)
+        $translate-y: $translate-distance * math.cos($rotation-angle)
+        transform: rotate($rotation-angle) translateX(#{$translate-x}) translateY(#{$translate-y})
+    .card#{$i}pickup
+      $translate-x: $translate-distance * math.sin($rotation-angle)
+      $translate-y: $translate-distance * math.cos($rotation-angle)
+      transform: rotate($rotation-angle) translateX(#{$translate-x}) translateY(#{$translate-y})

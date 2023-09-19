@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Croissant+One&display=swap");
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.game {
+  position: relative;
+  outline: 1px solid red;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Croissant One", cursive;
+}
+.game .tip {
+  text-align: center;
+  font-size: 32px;
+}
+.game .post1 {
+  margin-bottom: 450px;
+}
+.game .post2 {
+  margin-left: 450px;
+}
+.game .post3 {
+  margin-left: -450px;
+}
+.game .card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: -100px;
+  transform-origin: center calc(100% + 100px);
+  perspective: 500px;
+  transition: transform 0.5s;
+}
+.game .card .content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  border-radius: 16px;
+}
+.game .card .content .front {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+.game .card .content .front::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background-image: url(../images/back.png);
+  background-position: center center;
+  background-size: cover;
+}
+.game .card .content .back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  color: #03446A;
+  background-color: #fff;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game .card .content .back::after {
+  content: attr(text);
+}
+.game .card .content .back::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  border: 5px solid #03446A;
+  border-radius: 10px;
+  background-color: transpatent;
+}
+.game .card .content .reversed::after {
+  rotate: 180deg;
+}
+.game .card .active {
+  transform: rotateY(180deg);
+  transition: transform 0.5s;
+}
+.game .card .pickup {
+  margin-bottom: 100px;
+}
+.game .forward1 {
+  z-index: 1;
+  transition: all 0.5s;
+  bottom: 60px;
+}
+.game .forward12 {
+  z-index: 2;
+  bottom: 490px;
+}
+.game .forward2 {
+  transition: all 0.5s;
+  bottom: 60px;
+}
+.game .forward22 {
+  bottom: 260px;
+  left: 450px;
+}
+.game .forward3 {
+  z-index: 3;
+  transition: all 0.5s;
+  bottom: 60px;
+}
+.game .forward32 {
+  bottom: 260px;
+  left: -450px;
+}
+.game .card1Active {
+  transition: transform 0.5s;
+  transform: rotate(-45deg);
+}
+.game .card1Active:hover {
+  transform: rotate(-45deg) translateX(35.3553390593px) translateY(-35.3553390593px);
+}
+.game .card1pickup {
+  transform: rotate(-45deg) translateX(35.3553390593px) translateY(-35.3553390593px);
+}
+.game .card2Active {
+  transition: transform 0.5s;
+  transform: rotate(-35deg);
+}
+.game .card2Active:hover {
+  transform: rotate(-35deg) translateX(28.6788218176px) translateY(-40.9576022144px);
+}
+.game .card2pickup {
+  transform: rotate(-35deg) translateX(28.6788218176px) translateY(-40.9576022144px);
+}
+.game .card3Active {
+  transition: transform 0.5s;
+  transform: rotate(-25deg);
+}
+.game .card3Active:hover {
+  transform: rotate(-25deg) translateX(21.130913087px) translateY(-45.3153893518px);
+}
+.game .card3pickup {
+  transform: rotate(-25deg) translateX(21.130913087px) translateY(-45.3153893518px);
+}
+.game .card4Active {
+  transition: transform 0.5s;
+  transform: rotate(-15deg);
+}
+.game .card4Active:hover {
+  transform: rotate(-15deg) translateX(12.9409522551px) translateY(-48.2962913145px);
+}
+.game .card4pickup {
+  transform: rotate(-15deg) translateX(12.9409522551px) translateY(-48.2962913145px);
+}
+.game .card5Active {
+  transition: transform 0.5s;
+  transform: rotate(-5deg);
+}
+.game .card5Active:hover {
+  transform: rotate(-5deg) translateX(4.3577871374px) translateY(-49.8097349046px);
+}
+.game .card5pickup {
+  transform: rotate(-5deg) translateX(4.3577871374px) translateY(-49.8097349046px);
+}
+.game .card6Active {
+  transition: transform 0.5s;
+  transform: rotate(5deg);
+}
+.game .card6Active:hover {
+  transform: rotate(5deg) translateX(-4.3577871374px) translateY(-49.8097349046px);
+}
+.game .card6pickup {
+  transform: rotate(5deg) translateX(-4.3577871374px) translateY(-49.8097349046px);
+}
+.game .card7Active {
+  transition: transform 0.5s;
+  transform: rotate(15deg);
+}
+.game .card7Active:hover {
+  transform: rotate(15deg) translateX(-12.9409522551px) translateY(-48.2962913145px);
+}
+.game .card7pickup {
+  transform: rotate(15deg) translateX(-12.9409522551px) translateY(-48.2962913145px);
+}
+.game .card8Active {
+  transition: transform 0.5s;
+  transform: rotate(25deg);
+}
+.game .card8Active:hover {
+  transform: rotate(25deg) translateX(-21.130913087px) translateY(-45.3153893518px);
+}
+.game .card8pickup {
+  transform: rotate(25deg) translateX(-21.130913087px) translateY(-45.3153893518px);
+}
+.game .card9Active {
+  transition: transform 0.5s;
+  transform: rotate(35deg);
+}
+.game .card9Active:hover {
+  transform: rotate(35deg) translateX(-28.6788218176px) translateY(-40.9576022144px);
+}
+.game .card9pickup {
+  transform: rotate(35deg) translateX(-28.6788218176px) translateY(-40.9576022144px);
+}
+.game .card10Active {
+  transition: transform 0.5s;
+  transform: rotate(45deg);
+}
+.game .card10Active:hover {
+  transform: rotate(45deg) translateX(-35.3553390593px) translateY(-35.3553390593px);
+}
+.game .card10pickup {
+  transform: rotate(45deg) translateX(-35.3553390593px) translateY(-35.3553390593px);
+}/*# sourceMappingURL=index.css.map */
