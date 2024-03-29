@@ -39,7 +39,7 @@ html, body {
   bottom: -100px;
   transform-origin: center calc(100% + 100px);
   perspective: 500px;
-  transition: transform 0.5s;
+  transition: all 0.5s;
 }
 .game .card .content {
   position: absolute;
@@ -102,7 +102,7 @@ html, body {
   border-radius: 10px;
   background-color: transpatent;
 }
-.game .card .content .reversed::after {
+.game .card .content .reversed {
   rotate: 180deg;
 }
 .game .card .active {

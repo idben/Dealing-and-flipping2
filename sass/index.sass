@@ -40,7 +40,7 @@ html, body
     bottom: -100px
     transform-origin: center calc( 100% + 100px )
     perspective: 500px
-    transition: transform 0.5s
+    transition: all 0.5s
     .content
       position: absolute
       width: 100%
@@ -97,8 +97,7 @@ html, body
           border-radius: 10px
           background-color: transpatent
       .reversed
-        &::after
-          rotate: 180deg
+        rotate: 180deg
     .active
       transform: rotateY(180deg)
       transition: transform 0.5s
